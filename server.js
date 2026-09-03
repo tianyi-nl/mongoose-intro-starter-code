@@ -158,6 +158,45 @@ app.get("./songs/:songId", async (req, res, next) => {
   }
 });
 
+app.get("./songs", async (req, res, next) => {
+  try {
+    const response = await Song.findById()
+      .populate("artist")
+      .populate({
+        path: "collaboratingArtists",
+        sort: { awardsWon: -1 },
+        limit: 1,
+      });
+
+    res.json(response);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+//nested populate
+app.get("./songs", async (req, res, next) => {
+  try {
+    const response = await Song.findById()
+      .populate({
+        path: "artist",
+        populate: {
+          path: "favOtherArtist",
+        },
+      })
+
+      .populate({
+        path: "collaboratingArtists",
+        sort: { awardsWon: -1 },
+        limit: 1,
+      });
+
+    res.json(response);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // server listen & PORT
 const PORT = process.env.PORT || 5005;
 

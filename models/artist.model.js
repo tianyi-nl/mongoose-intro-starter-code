@@ -17,6 +17,13 @@ const artistSchema = new mongoose.Schema({
     type: String,
     enum: ["rock", "alternative","pop","punk","nu-metal"],
   },
+  
+favOtherArties:{
+
+  type: [mongoose.Schema.Types.ObjectId],
+      ref:"Artist",
+}
+
 });
 
 // creating the Model ==> tool allow use to go into the collection to create modify etc..
