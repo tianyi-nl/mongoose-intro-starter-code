@@ -27,7 +27,7 @@ app.use(express.static("public"));
 // to allow CORS access from anywhere
 app.use(
   cors({
-    origin: "*",
+    origin: "process.env.ORIGIN"
   }),
 );
 
