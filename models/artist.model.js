@@ -21,7 +21,7 @@ const artistSchema = new mongoose.Schema({
 
 // creating the Model ==> tool allow use to go into the collection to create modify etc..
 
-const Artist = mongoose.model("Artist", artistSchema);
-// internal name of the model. Always signular, capitlized and signle word.
+const Artist = mongoose.model("Artist", artistSchema); 
+// internal name of the model. Always signular, capitlized and signle word. name is important here .
 
 module.exports = Artist; // export things in ES5 or comonJS
